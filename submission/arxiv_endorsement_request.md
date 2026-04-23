@@ -139,6 +139,9 @@ significantly outperforms always-on deployment (p=0.036), providing
 empirical support for a human-AI collaborative trading framework that
 does not rely on hindsight.
 
+Full manuscript on SSRN (submitted 2026-03-27, under staff review):
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6477100
+
 arXiv gave me the following endorsement code:
 
     EEZQQM
