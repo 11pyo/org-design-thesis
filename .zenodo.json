@@ -1,0 +1,41 @@
+{
+  "title": "Volatility Reverses the Horizontal-Organization Advantage: ABM and analysis code",
+  "upload_type": "software",
+  "description": "Agent-based model and analysis code for the working paper \"Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure.\" Contains the Kauffman NK-landscape ABM, nine experiment drivers (three baseline plus four robustness extensions: seed replication, alternative shock models, multi-level vertical, agent heterogeneity), bootstrap-inference analysis, and the end-to-end manuscript-assembly pipeline. 36,900 simulated runs. Seeds fixed; bit-for-bit reproducible on the same NumPy version. Audit-signed by the author at commit 8a50752 on 2026-04-23.",
+  "creators": [
+    {
+      "name": "Han, Wonpyo",
+      "orcid": "0009-0002-7528-2228"
+    }
+  ],
+  "keywords": [
+    "organizational design",
+    "contingency theory",
+    "horizontal organization",
+    "agent-based modeling",
+    "NK landscape",
+    "environmental volatility",
+    "information accessibility",
+    "self-management",
+    "boundary condition",
+    "Burns and Stalker",
+    "computational social science",
+    "reproducible research"
+  ],
+  "access_right": "open",
+  "license": "CC-BY-4.0",
+  "language": "eng",
+  "related_identifiers": [
+    {
+      "identifier": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219",
+      "relation": "isSupplementTo",
+      "resource_type": "publication-workingpaper"
+    },
+    {
+      "identifier": "https://github.com/11pyo/org-design-thesis",
+      "relation": "isDerivedFrom",
+      "resource_type": "software"
+    }
+  ],
+  "notes": "See AUDIT_CHECKLIST.md in the repository for independent verification steps. An earlier draft contained a simulation bug (shock-propagation in the hybrid branch) that was caught, corrected, and transparently documented in the manuscript."
+}
