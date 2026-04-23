@@ -290,6 +290,14 @@ Verified: no assistant-only-written code remains unreviewed.
 
 ---
 
+## Audit log
+
+| Date | Auditor | Commit | Result |
+|---|---|---|---|
+| 2026-04-23 | Wonpyo Han | `8a50752` | **Pass** — all six verification steps (1–5 baseline + 4.5 extensions) reproduced cleanly. Spearman ρ(ω, V−H) = +1.000 on the baseline gradient; all four extension batteries yield ρ ≥ +0.886 (replication), ≥ +0.943 (alt shocks), +1.000 (heterogeneity), with ML-V tracking V (|V−ML|=0.005 vs |V−H|=0.051). No `v2.run_hybrid` calls remain in dynamic time-loops. Code is clear to release. |
+
+---
+
 ## What this checklist does NOT cover
 
 - **Substantive claims.** It verifies the code runs correctly and reproduces numbers. It does not verify that the theoretical framing is sound. For that, read `paper/manuscript.md` end-to-end.

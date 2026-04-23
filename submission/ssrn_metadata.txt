@@ -37,7 +37,7 @@ AUTHORS
 --------------------
 Wonpyo Han
 Email: unc50018441@gmail.com
-ORCID: (create one at orcid.org)
+ORCID: 0009-0002-7528-2228
 
 
 DATE OF WRITING
@@ -62,7 +62,7 @@ No external funding. Research scaffolding generated via AI-assisted workflow (Cl
 
 LINKS
 --------------------
-- Code & data: https://github.com/<your-username>/org-design-thesis
+- Code & data: https://github.com/11pyo/org-design-thesis
 - Code release DOI: (paste from Zenodo after release)
 
 

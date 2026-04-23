@@ -141,6 +141,6 @@ SSRN and Zenodo identifiers will be added here once assigned.
 
 ## Contact
 
-Wonpyo Han · `pk102h@naver.com`
+Wonpyo Han · `pk102h@naver.com` · ORCID [0009-0002-7528-2228](https://orcid.org/0009-0002-7528-2228)
 
 Feedback, critique, and co-authorship inquiries welcome. Organization-theory expertise in framing/positioning for top-tier submission is the primary collaboration need.
