@@ -135,7 +135,9 @@ How environmental turbulence inverts the information-accessibility
 prescription for organizational structure. Working paper.
 ```
 
-SSRN and Zenodo identifiers will be added here once assigned.
+- **SSRN:** [abstract 6634219](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219) (submitted 2026-04-23, under staff review)
+- **Zenodo DOI:** [10.5281/zenodo.19707964](https://doi.org/10.5281/zenodo.19707964) (minted 2026-04-23 from v1.0 release)
+- **ORCID:** [0009-0002-7528-2228](https://orcid.org/0009-0002-7528-2228)
 
 ---
 

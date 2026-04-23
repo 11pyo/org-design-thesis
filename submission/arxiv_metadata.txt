@@ -21,7 +21,7 @@ Wonpyo Han
 
 COMMENTS (max 255 chars)
 --------------------
-~30 pages, 8 figures. 36,900 ABM runs across 9 robustness batteries + 854 parsed 10-Ks, reproducible from https://github.com/11pyo/org-design-thesis. ~90 min total replication. ORCID 0009-0002-7528-2228. Transparency note on a corrected earlier finding included.
+~30 pages, 8 figures. 36,900 ABM runs across 9 robustness batteries + 854 parsed 10-Ks, reproducible from https://github.com/11pyo/org-design-thesis (code DOI 10.5281/zenodo.19707964; SSRN abstract 6634219). ~90 min total replication. ORCID 0009-0002-7528-2228.
 
 MSC CLASSES
 --------------------

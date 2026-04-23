@@ -62,8 +62,9 @@ No external funding. Research scaffolding generated via AI-assisted workflow (Cl
 
 LINKS
 --------------------
+- SSRN abstract: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219
 - Code & data: https://github.com/11pyo/org-design-thesis
-- Code release DOI: (paste from Zenodo after release)
+- Code release DOI: https://doi.org/10.5281/zenodo.19707964
 
 
 SUGGESTED CITATION
