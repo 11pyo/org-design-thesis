@@ -17,7 +17,7 @@ Volatility Reverses the Horizontal-Organization Advantage: How Environmental Tur
 
 AUTHORS
 --------------------
-Wonpyo Han
+Wonpyo Han (Department of Industrial and Management Engineering, Hansung University, Seoul, South Korea)
 
 COMMENTS (max 255 chars)
 --------------------

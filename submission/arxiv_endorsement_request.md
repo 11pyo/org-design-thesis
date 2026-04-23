@@ -1,11 +1,27 @@
-# arXiv endorsement request — template
+# arXiv endorsement requests — two parallel papers
 
-> Draft email to send after registering on arXiv and attempting first submission.
-> arXiv will issue you a **6-character endorsement code** at that point; paste it into the `{{ENDORSEMENT_CODE}}` slot below.
+> **Author profile:** Wonpyo Han, Department of Industrial and Management Engineering, Hansung University, Seoul, South Korea · ORCID 0009-0002-7528-2228 · pk102h@naver.com
+
+| Paper | arXiv submission | Category | Endorsement code |
+|---|---|---|---|
+| **Paper 1** — *Volatility Reverses the Horizontal-Organization Advantage* | 7513080 | **econ.GN** | **`ZYYTDF`** |
+| **Paper 2** — *Adaptive Limits of Algorithmic Cryptocurrency Trading* | 7450889 | **cs.AI** | **`EEZQQM`** |
+
+Each category needs its own endorser. A single endorsement unlocks *all future submissions in that category* but does not transfer between categories.
+
+## arXiv's endorser qualification rule
+
+An endorser for **econ.GN** must have **submitted ≥ 3 papers to econ.EM / econ.GN / econ.TH** with the earliest between **3 months and 5 years ago**. Most strategy / organization-theory researchers use SSRN, not arXiv, so not everyone we'd naturally ask will qualify. The email template below includes a polite out-clause ("if you don't meet that criterion, a recommendation would be appreciated") so non-qualifying candidates can redirect us instead of ghosting.
+
+**How to pre-check a candidate** (10 seconds each): open any of their papers on arxiv.org; scroll to the abstract-page bottom; click "Which of the authors of this article can endorse?" — if the candidate's name appears, they qualify for the relevant category.
 
 ---
 
-## Who to ask (priority order)
+---
+
+## PAPER 1 — econ.GN endorsement (`ZYYTDF`)
+
+### Who to ask (priority order)
 
 All three below regularly publish to `econ.GN` and handle organizational-design / firm-level computational work. Odds of response are broadly similar; pick one, send, wait 48–72 h, move to the next if no reply.
 
@@ -28,7 +44,7 @@ All three below regularly publish to `econ.GN` and handle organizational-design 
 
 ---
 
-## Email template
+### Email template (econ.GN, Paper 1)
 
 ```
 Subject: arXiv endorsement request — econ.GN — NK-landscape paper
@@ -55,11 +71,16 @@ Full artifact available for your review:
 
 arXiv gave me the following endorsement code:
 
-    {{ENDORSEMENT_CODE}}
+    ZYYTDF
 
 If you judge the paper to meet the scholarly standard for econ.GN and
 you are willing to endorse, the one-click process is at:
-https://arxiv.org/auth/need-endorsement
+https://arxiv.org/auth/endorse
+
+(arXiv requires endorsers to have submitted >= 3 papers to econ.EM /
+econ.GN / econ.TH between 3 months and 5 years ago. If you don't meet
+that specific criterion, a one-line recommendation of someone who does
+would be enormously helpful.)
 
 You would enter the endorsement code above and my email
 (pk102h@naver.com). The endorsement does not imply agreement with
@@ -70,8 +91,71 @@ you in advance for considering.
 
 With thanks,
 Wonpyo Han
-ORCID 0009-0002-7528-2228
-pk102h@naver.com
+Department of Industrial and Management Engineering, Hansung University
+ORCID 0009-0002-7528-2228 · pk102h@naver.com
+```
+
+---
+
+## PAPER 2 — cs.AI endorsement (`EEZQQM`)
+
+### Best candidate: a Hansung University faculty member
+
+arXiv explicitly recommends asking your thesis advisor or a department professor. A Hansung Industrial and Management Engineering faculty member who has submitted ≥ 3 papers to any cs.* category within the last 5 years (but not within the last 3 months) is the ideal endorser — personal relationship lowers the ask, and the qualification check is simple.
+
+**Action step:** ask the user to list 1–3 Hansung professors whose research touches AI, ML, computational finance, or algorithmic trading. Then check each person's most recent paper on arxiv.org — at the bottom of any abstract page, "Which of the authors of this article can endorse?" lists whether they qualify for cs.AI specifically.
+
+### Backup candidates (if no Hansung prof qualifies)
+
+Active cs.AI endorsers in Korea with related research interests:
+- **Jaewoo Kang** (Korea University, AI/NLP) — prolific cs.AI poster
+- **Jong-Hwan Kim** (KAIST, robotics/AI)
+- **Sungroh Yoon** (Seoul National University, ML/AI)
+- **Kibok Lee** (Yonsei, ML) — mid-career, higher response rate
+
+### Email template (cs.AI, Paper 2)
+
+```
+Subject: arXiv endorsement request — cs.AI — algorithmic trading / complex adaptive systems paper
+
+Dear Professor {{Name}},
+
+I'm a researcher at the Department of Industrial and Management
+Engineering, Hansung University, seeking arXiv endorsement for a
+first submission to the cs.AI category.
+
+The paper ("Adaptive Limits of Algorithmic Cryptocurrency Trading
+from a Complex Adaptive Systems Perspective") is an empirical study
+of why composite technical trading algorithms struggle in
+cryptocurrency markets. 160+ backtesting experiments across 10
+cryptocurrency assets and 45 months, with six complementary analyses
+(walk-forward cross-validation, Q-Learning reinforcement learning,
+sentiment integration, outlier robustness, fee sensitivity, and a
+real-time regime detection test that eliminates retrospective bias).
+
+The headline finding: a simple real-time EMA(50/200) regime detector
+that activates the trading algorithm only during detected downtrends
+significantly outperforms always-on deployment (p=0.036), providing
+empirical support for a human-AI collaborative trading framework that
+does not rely on hindsight.
+
+arXiv gave me the following endorsement code:
+
+    EEZQQM
+
+If you judge the paper to meet the cs.AI scholarly standard and you
+are willing to endorse, the one-click process is at:
+https://arxiv.org/auth/endorse
+
+(arXiv requires endorsers to have submitted >= 3 papers to any cs.*
+category between 3 months and 5 years ago. If you don't meet that
+specific criterion, a one-line recommendation of someone who does
+would be enormously helpful.)
+
+With thanks,
+Wonpyo Han
+Department of Industrial and Management Engineering, Hansung University
+ORCID 0009-0002-7528-2228 · pk102h@naver.com
 ```
 
 ---

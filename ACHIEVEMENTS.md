@@ -3,6 +3,7 @@
 > Résumé-style log of deliverables, research contributions, outreach, and submissions for the *Volatility Reverses the Horizontal-Organization Advantage* working paper project. Maintained chronologically; facts only, verifiable against git history and external URLs.
 
 **Author:** Wonpyo Han (한원표)
+**Affiliation:** Department of Industrial and Management Engineering, Hansung University, Seoul, South Korea
 **ORCID:** [0009-0002-7528-2228](https://orcid.org/0009-0002-7528-2228)
 **Public email:** pk102h@naver.com
 **Project repository:** [github.com/11pyo/org-design-thesis](https://github.com/11pyo/org-design-thesis)
@@ -13,6 +14,10 @@
 ## One-line summary
 
 Produced a working paper with a novel, counterintuitive finding in organizational contingency theory — backed by 36,900 simulated runs across 9 pre-registered robustness batteries — and took it from blank repo to public, DOI-minted, audit-signed release in 48 hours.
+
+## Independent second project (parallel)
+
+*Adaptive Limits of Algorithmic Cryptocurrency Trading from a Complex Adaptive Systems Perspective: An Empirical Study on Human-AI Collaborative Strategy* — March 2026, sole-authored at Hansung University. 160+ experiments across 10 cryptocurrency assets over 45 months testing composite technical trading rules, Q-Learning, and sentiment integration. Headline: a real-time EMA(50/200) regime detector significantly outperforms always-on algorithmic deployment (p=0.036), providing empirical support for a human-AI collaborative trading framework. JEL: G14, G11, C63, C61. Target: arXiv cs.AI (submission 7450889, endorsement code EEZQQM pending).
 
 ---
 

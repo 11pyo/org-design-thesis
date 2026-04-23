@@ -2,7 +2,7 @@
 
 *How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure*
 
-**Working paper** · Wonpyo Han · 2026
+**Working paper** · Wonpyo Han · Hansung University · 2026
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19707964.svg)](https://doi.org/10.5281/zenodo.19707964)
 [![SSRN](https://img.shields.io/badge/SSRN-6634219-blue.svg)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219)
@@ -146,6 +146,8 @@ prescription for organizational structure. Working paper.
 
 ## Contact
 
-Wonpyo Han · `pk102h@naver.com` · ORCID [0009-0002-7528-2228](https://orcid.org/0009-0002-7528-2228)
+Wonpyo Han
+Department of Industrial and Management Engineering, Hansung University, Seoul, South Korea
+`pk102h@naver.com` · ORCID [0009-0002-7528-2228](https://orcid.org/0009-0002-7528-2228)
 
 Feedback, critique, and co-authorship inquiries welcome. Organization-theory expertise in framing/positioning for top-tier submission is the primary collaboration need.
