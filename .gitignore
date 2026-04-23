@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.pytest_cache/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Claude Code session state (private)
+.claude/
+memory/
+
+# Raw 10-K filings — too large for git; re-fetch via empirical/real_data/fetch_10k.py
+empirical/real_data/filings/
+empirical/real_data/_parse_checkpoint.csv
+empirical/real_data/fetch_log.txt
+empirical/real_data/yf_log.txt
+
+# Local build byproducts
+*.egg
+*.log
+.env
+*.key
+credentials*
+
+# LaTeX build (if ever used)
+*.aux
+*.bbl
+*.blg
+*.out
+*.toc

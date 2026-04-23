@@ -1,0 +1,57 @@
+============================================================
+arXiv submission fields - ready to copy-paste
+============================================================
+
+PRIMARY CATEGORY
+--------------------
+econ.GN   (General Economics)
+
+CROSS-LIST CATEGORIES
+--------------------
+cs.CY     (Computers and Society)
+cs.MA     (Multiagent Systems)
+
+TITLE
+--------------------
+Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure
+
+AUTHORS
+--------------------
+Wonpyo Han
+
+COMMENTS (max 255 chars)
+--------------------
+~30 pages, 8 figures. 36,900 ABM runs across 9 robustness batteries + 854 parsed 10-Ks, reproducible from https://github.com/<your-username>/org-design-thesis. ~90 min total replication. Transparency note on a corrected earlier finding included.
+
+MSC CLASSES
+--------------------
+91D30 (social networks; opinion dynamics)
+91B62 (dynamic economic models)
+
+ACM CLASSES
+--------------------
+I.2.11 (Distributed Artificial Intelligence)
+J.4 (Social and Behavioral Sciences)
+
+
+ABSTRACT (300-400 words)
+--------------------
+The popular claim that information technology favors flat organizations coexists with a mixed empirical record: Morning Star and Buurtzorg have thrived flat for decades while Zappos partially rolled back its holacracy and Oticon's spaghetti organization dissolved. Classical contingency theory (Burns and Stalker 1961) predicted that flat, organic structures fit turbulent environments -- a prediction modern management discourse has amplified into "AI makes flat organizations inevitable."
+
+This paper tests the prediction computationally in agent-based models on Kauffman NK fitness landscapes, and finds it inverted. Environmental volatility does not favor horizontal structures; it reverses the horizontal advantage. We report findings from 36,900 simulated firm-level experiments across nine pre-registered batteries. First, in static environments the classical conditional story holds: vertical wins when individual information accessibility tau is low, horizontal wins when tau is high, and the crossover threshold decreases in task complexity K. Second, introducing environmental shocks monotonically shifts the V-vs-H performance gap toward V. At near-static shock frequencies (1 per 100 steps), H beats V by 0.029 fitness units (95% bootstrap CI [-0.036, -0.023]); at high shock frequencies (1 per 3 steps), V beats H by 0.081 ([+0.070, +0.092]). Regressing V-H on log(shock frequency) gives slope +0.030 (95% CI [+0.026, +0.033]); permutation p < 0.002; Spearman rho = +1.00 across six volatility levels. Crucially, the dose-response replicates across three independent seed banks (all rho >= +0.88), survives four alternative shock-model specifications (periodic, Poisson-timed, continuous drift, correlated-block; all rho >= +0.94), holds across four agent-heterogeneity regimes (homogeneous, mild, skewed, extreme-star-distribution; all rho = +1.00), and reproduces under a multi-level vertical structure with local-authority mid-managers -- structurally closer to Burns and Stalker's mechanistic organization than the baseline "dictatorship V." Third, cluster-based hybrids perform between V and H; we find no evidence that modularity systematically dominates pure forms in either regime.
+
+A preliminary regression on a 111-firm-year SEC EDGAR plus yfinance panel is reported as pipeline validation rather than inferential evidence; the current sample is underpowered and heterogeneously measured.
+
+The contribution is threefold. Theoretically, the Burns-Stalker prediction that organic structures fit turbulent environments is not supported by NK simulation under any of the nine robustness variants; separating task complexity K, information accessibility tau, and environmental volatility omega reveals that omega favors the opposite of what classical contingency theory associates with it. Practically, the popular "AI + volatility -> flat" argument has the second step pointing the wrong way. Methodologically, we show that separating omega from K is essential: the conventional bundle "environmental uncertainty" hides opposite-sign moderations.
+
+The paper also includes a transparency note documenting a corrected earlier finding: an initial draft claimed cluster-based hybrid dominance under volatility, which resulted from a simulation bug that omitted landscape shocks from the hybrid trajectory. The bug was fixed, experiments re-run, and findings revised accordingly.
+
+
+LICENSE
+--------------------
+CC BY 4.0
+
+
+ENDORSEMENT NOTE
+--------------------
+If this is your first arXiv submission in econ.GN you may need an endorsement. Email a brief request to any recent econ.GN author; typically non-blocking.

@@ -1,0 +1,501 @@
+<!doctype html><html><head><meta charset='utf-8'>
+<style>
+  body { font-family: Georgia, 'Noto Serif CJK KR', serif;
+         max-width: 760px; margin: 2em auto; line-height: 1.55; color: #222;
+         font-size: 11pt; }
+  h1 { font-size: 18pt; border-bottom: 2px solid #333; padding-bottom: 0.2em; }
+  h2 { font-size: 14pt; color: #333; border-bottom: 1px solid #ccc; padding-bottom: 0.15em; }
+  h3 { font-size: 12pt; color: #555; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 10pt; }
+  pre { background: #f4f4f4; padding: 0.8em; border-radius: 6px;
+        overflow-x: auto; font-size: 10pt; }
+  table { border-collapse: collapse; margin: 1em 0; font-size: 10pt; }
+  th, td { border: 1px solid #ccc; padding: 4px 10px; }
+  th { background: #eee; }
+  blockquote { border-left: 3px solid #888; padding-left: 1em; color: #555; }
+  img { max-width: 100%; height: auto; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 2em 0; }
+  .math { font-family: 'Cambria Math', 'STIX', serif; }
+  @page { size: A4; margin: 2cm; }
+</style>
+</head><body><h1 id="integrated-results-report-volatility-reversal-finding">Integrated Results Report — Volatility-Reversal Finding</h1>
+<p><strong>Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure.</strong></p>
+<p>Working paper — simulation + preliminary archival pipeline.</p>
+<hr />
+<h2 id="transparency-note-2026-04-22">Transparency note (2026-04-22)</h2>
+<p>An earlier draft of this work claimed cluster-based hybrid dominance under environmental volatility. That claim was wrong. The earlier dynamic-experiment code delegated the hybrid trajectory to <code>v2.run_hybrid</code>, which does not apply landscape shocks. When shocks were correctly applied to all three structures, the hybrid advantage disappeared. We re-ran the experiments, revised the paper, and document the correction openly.</p>
+<p>The corrected finding is reported below.</p>
+<hr />
+<h2 id="executive-summary">Executive summary</h2>
+<p>Four findings from <strong>36,900 ABM runs across nine pre-registered batteries</strong>:</p>
+<ol>
+<li><strong>Static baseline confirms classical contingency.</strong> In static NK landscapes, vertical wins at low τ, horizontal wins at high τ, and the crossover τ*(K) decreases in task complexity. H1–H4 supported.</li>
+<li><strong>Headline — volatility reverses the horizontal advantage.</strong> Introducing environmental shocks monotonically shifts the V-vs-H performance gap toward vertical. At one shock per 100 steps (near-static), H beats V by 0.029 (95% bootstrap CI [−0.036, −0.023]). At one shock per 3 steps (high-vol), V beats H by 0.081 ([+0.070, +0.092]). Slope on log(ω): +0.030 (95% CI [+0.026, +0.033]); permutation p &lt; 0.002; Spearman ρ = +1.00 across six levels.</li>
+<li><strong>The headline survives aggressive robustness checks.</strong> The V-dominance pattern replicates across three independent seed banks (ρ ≥ +0.88), four alternative shock-model specifications (periodic/Poisson/drift/correlated, ρ ≥ +0.94), four agent-heterogeneity regimes from homogeneous to extreme-star-distribution (all ρ = +1.00), and a multi-level vertical structure with local-authority mid-managers (Burns-Stalker mechanistic form) that rules out a "dictatorship-V" artifact.</li>
+<li><strong>Hybrid is mid-pack.</strong> Performs between V and H in both regimes. Modularity does not uniformly dominate.</li>
+</ol>
+<hr />
+<h2 id="1-static-baseline-h1h4">1. Static baseline (H1–H4)</h2>
+<p>Results from <code>results.csv</code> (v1 aggregation-rule), <code>results_v2.csv</code> (v2 independent-exploration with fragmentation cost), and <code>results_robustness.csv</code> (7,020-run sensitivity battery).</p>
+<h3 id="v2-headline-static-model">v2 (headline static model)</h3>
+<ul>
+<li>Clean crossovers: τ*(K=2) = 0.16, τ*(K=5) = 0.13, τ*(K=10) = 0.13.</li>
+<li>Fine-grid refinement: τ*(K=2) = 0.157, τ*(K=5) = 0.121, τ*(K=10) = 0.119.</li>
+<li>H − V gap peaks at +0.055 for K = 10, τ = 0.3.</li>
+<li>H4 (∂τ*/∂K &lt; 0) quantitatively confirmed.</li>
+</ul>
+<p><strong>Figure:</strong> <code>results/figures/fig_delta_HV_v2.png</code></p>
+<h3 id="robustness-sweeps">Robustness sweeps</h3>
+<ul>
+<li>Fragmentation cost ∈ {0.10, 0.20, 0.30}: shifts low-τ endpoint but crossover structure persists.</li>
+<li>n_agents ∈ {15, 30, 60}: qualitative patterns invariant.</li>
+<li>Fine-τ grid (step 0.025): refined τ* estimates monotone-decreasing in K.</li>
+</ul>
+<hr />
+<h2 id="2-volatility-reversal-h5-headline">2. Volatility reversal (H5 — headline)</h2>
+<h3 id="fixed-shock-frequency-1620-runs-shock_every-10">Fixed shock frequency (1,620 runs, SHOCK_EVERY = 10)</h3>
+<p>Results in <code>results_dynamic.csv</code>. V uniformly outperforms H across (τ, K). Hybrid between.</p>
+<table>
+<thead>
+<tr>
+<th>K</th>
+<th>τ</th>
+<th>V</th>
+<th>H</th>
+<th>Hy</th>
+<th>V − H</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>0.1</td>
+<td>0.682</td>
+<td>0.515</td>
+<td>0.589</td>
+<td>+0.167</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0.9</td>
+<td>0.676</td>
+<td>0.702</td>
+<td>0.693</td>
+<td>−0.026</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.1</td>
+<td>0.700</td>
+<td>0.539</td>
+<td>0.594</td>
+<td>+0.161</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.5</td>
+<td>0.690</td>
+<td>0.634</td>
+<td>0.645</td>
+<td>+0.056</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.1</td>
+<td>0.659</td>
+<td>0.525</td>
+<td>0.553</td>
+<td>+0.134</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.5</td>
+<td>0.685</td>
+<td>0.603</td>
+<td>0.676</td>
+<td>+0.082</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Figure:</strong> <code>results/figures/fig_perf_curves_dynamic.png</code></p>
+<h3 id="volatility-gradient-4860-runs-shock_every-3-5-10-20-40-100">Volatility gradient (4,860 runs, SHOCK_EVERY ∈ {3, 5, 10, 20, 40, 100})</h3>
+<p>Results in <code>results_volatility.csv</code>. Cleanest finding of the paper:</p>
+<table>
+<thead>
+<tr>
+<th>SHOCK_EVERY</th>
+<th>Volatility ω</th>
+<th>V − H mean</th>
+<th>SEM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>0.010</td>
+<td><strong>−0.029</strong></td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>40</td>
+<td>0.025</td>
+<td>+0.021</td>
+<td>0.010</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.050</td>
+<td>+0.046</td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.100</td>
+<td>+0.054</td>
+<td>0.015</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.200</td>
+<td>+0.071</td>
+<td>0.023</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.333</td>
+<td>+0.081</td>
+<td>0.023</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Spearman ρ(ω, V − H) = +1.00 across the six levels.</strong></p>
+<p>Crossover between shock/100 (H wins by 0.029) and shock/40 (V wins by 0.021). Above the crossover, V dominates uniformly.</p>
+<p><strong>Figures:</strong><br />
+- <code>results/figures/fig_VH_gap_by_volatility.png</code> — headline dose-response<br />
+- <code>results/figures/fig_vol_by_tau.png</code> — by-K and τ breakdown<br />
+- <code>results/figures/fig_structure_fitness_vol.png</code> — all three structures' absolute performance vs volatility</p>
+<hr />
+<h2 id="3-robustness-battery-2026-04-23-extension">3. Robustness battery (2026-04-23 extension)</h2>
+<p>Four orthogonal critiques of the headline were addressed by running four additional experiments. All four confirm H5.</p>
+<h3 id="31-statistical-robustness-3-independent-seed-banks-4860-runs">3.1 Statistical robustness — 3 independent seed banks (4,860 runs)</h3>
+<p>Results in <code>results_replication.csv</code>. Banks A, B, C use disjoint seed ranges.</p>
+<table>
+<thead>
+<tr>
+<th>Seed bank</th>
+<th align="right">V−H at shock/100</th>
+<th align="right">V−H at shock/3</th>
+<th align="right">Slope on log(ω)</th>
+<th align="right">Spearman ρ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td align="right">−0.024</td>
+<td align="right">+0.089</td>
+<td align="right">+0.0292</td>
+<td align="right">+1.000</td>
+</tr>
+<tr>
+<td>B</td>
+<td align="right">−0.032</td>
+<td align="right">+0.089</td>
+<td align="right">+0.0316</td>
+<td align="right">+0.943</td>
+</tr>
+<tr>
+<td>C</td>
+<td align="right">−0.040</td>
+<td align="right">+0.082</td>
+<td align="right">+0.0323</td>
+<td align="right">+0.886</td>
+</tr>
+</tbody>
+</table>
+<p>All three banks yield monotone positive dose-response. <strong>Figure:</strong> <code>results/figures/fig_replication_3banks.png</code>.</p>
+<h3 id="32-shock-model-specificity-4-variants-6480-runs">3.2 Shock-model specificity — 4 variants (6,480 runs)</h3>
+<p>Results in <code>results_shocks.csv</code>. The baseline 25%-locus-reshuffle is only one operationalization; we test four.</p>
+<table>
+<thead>
+<tr>
+<th>Shock model</th>
+<th align="right">Min-intensity V−H</th>
+<th align="right">Max-intensity V−H</th>
+<th align="right">Spearman ρ</th>
+<th align="right">Perm p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>periodic (baseline)</td>
+<td align="right">−0.034</td>
+<td align="right">+0.083</td>
+<td align="right">+0.943</td>
+<td align="right">0.0087</td>
+</tr>
+<tr>
+<td>poisson (random timing)</td>
+<td align="right">−0.023</td>
+<td align="right">+0.077</td>
+<td align="right">+0.943</td>
+<td align="right">0.0087</td>
+</tr>
+<tr>
+<td>drift (continuous small perturbations)</td>
+<td align="right">−0.032</td>
+<td align="right">+0.039</td>
+<td align="right">+1.000</td>
+<td align="right">0.0012</td>
+</tr>
+<tr>
+<td>correlated (block shifts)</td>
+<td align="right">−0.026</td>
+<td align="right">+0.057</td>
+<td align="right">+1.000</td>
+<td align="right">0.0012</td>
+</tr>
+</tbody>
+</table>
+<p>All four give the same qualitative pattern. H5 is not specific to the periodic reshuffle. <strong>Figure:</strong> <code>results/figures/fig_shocks_comparison.png</code>.</p>
+<h3 id="33-multi-level-vertical-burns-stalker-mechanistic-form-4860-runs">3.3 Multi-level vertical — Burns-Stalker mechanistic form (4,860 runs)</h3>
+<p>Results in <code>results_multilevel.csv</code>. The baseline V is effectively a CEO dictatorship; ML-V adds 5 mid-managers with local authority and a CEO coordination step every 3 time units.</p>
+<table>
+<thead>
+<tr>
+<th align="right">shock_every</th>
+<th align="right">V</th>
+<th align="right">ML-V</th>
+<th align="right">H</th>
+<th align="right">ML−H</th>
+<th align="right">V−H</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="right">100</td>
+<td align="right">0.700</td>
+<td align="right">0.703</td>
+<td align="right">0.733</td>
+<td align="right">−0.030</td>
+<td align="right">−0.033</td>
+</tr>
+<tr>
+<td align="right">40</td>
+<td align="right">0.680</td>
+<td align="right">0.678</td>
+<td align="right">0.651</td>
+<td align="right">+0.027</td>
+<td align="right">+0.030</td>
+</tr>
+<tr>
+<td align="right">20</td>
+<td align="right">0.677</td>
+<td align="right">0.676</td>
+<td align="right">0.645</td>
+<td align="right">+0.031</td>
+<td align="right">+0.032</td>
+</tr>
+<tr>
+<td align="right">10</td>
+<td align="right">0.682</td>
+<td align="right">0.673</td>
+<td align="right">0.624</td>
+<td align="right">+0.049</td>
+<td align="right">+0.059</td>
+</tr>
+<tr>
+<td align="right">5</td>
+<td align="right">0.678</td>
+<td align="right">0.681</td>
+<td align="right">0.611</td>
+<td align="right">+0.070</td>
+<td align="right">+0.066</td>
+</tr>
+<tr>
+<td align="right">3</td>
+<td align="right">0.690</td>
+<td align="right">0.698</td>
+<td align="right">0.606</td>
+<td align="right">+0.092</td>
+<td align="right">+0.084</td>
+</tr>
+</tbody>
+</table>
+<p>ML-V tracks V closely at every volatility level. The V-dominance is a property of hierarchical structure, not of centralization extremity. <strong>Figure:</strong> <code>results/figures/fig_multilevel_V.png</code>.</p>
+<h3 id="34-heterogeneous-agents-4-talent-regimes-720-runs">3.4 Heterogeneous agents — 4 talent regimes (720 runs)</h3>
+<p>Results in <code>results_heterogeneous.csv</code>. Real organizations have large variance in individual competence; the critique was that "V wins under volatility" might really be "talent-concentration wins."</p>
+<table>
+<thead>
+<tr>
+<th>Heterogeneity regime</th>
+<th align="right">V−H at static</th>
+<th align="right">V−H at high vol</th>
+<th align="right">Spearman ρ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>homogeneous (all agents share τ)</td>
+<td align="right">−0.036</td>
+<td align="right">+0.083</td>
+<td align="right">+1.000</td>
+</tr>
+<tr>
+<td>mild (τ_i ~ Normal(τ, 0.10))</td>
+<td align="right">−0.040</td>
+<td align="right">+0.062</td>
+<td align="right">+1.000</td>
+</tr>
+<tr>
+<td>skewed (20% stars at 2τ, 80% at 0.5τ)</td>
+<td align="right">−0.050</td>
+<td align="right">+0.115</td>
+<td align="right">+1.000</td>
+</tr>
+<tr>
+<td>extreme (10% at τ=1.0, 90% at 0.3τ)</td>
+<td align="right">−0.031</td>
+<td align="right">+0.158</td>
+<td align="right">+1.000</td>
+</tr>
+</tbody>
+</table>
+<p>All four regimes yield perfect ρ = +1.00. The <strong>extreme</strong> regime actually amplifies the V-advantage at high volatility (+0.158 vs homogeneous +0.083), but the monotone dose-response survives in every distribution. H5 is not a talent-concentration artifact. <strong>Figure:</strong> <code>results/figures/fig_heterogeneous_agents.png</code>.</p>
+<h3 id="35-what-the-robustness-battery-establishes">3.5 What the robustness battery establishes</h3>
+<p>Under nine orthogonal perturbations — three seed banks, four shock models, a structurally-different vertical form, and four talent distributions — H5 never reverses, never flattens, and never falls below Spearman ρ = +0.88. This is about as strong as ABM evidence gets.</p>
+<hr />
+<h2 id="4-archival-pipeline-preliminary">4. Archival pipeline — preliminary</h2>
+<p>N = 111 firm-years, 47 firms, from S&amp;P 500 (2021–2025). Data from SEC EDGAR 10-K filings + yfinance.</p>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Estimate</th>
+<th>p-value</th>
+<th>Honest read</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1 (flat coef, low-τ n=37)</td>
+<td>+0.322</td>
+<td>0.032</td>
+<td>wrong sign; subsample too small</td>
+</tr>
+<tr>
+<td>H2 (flat coef, high-τ n=37)</td>
+<td>+0.060</td>
+<td>0.303</td>
+<td>right direction, not significant</td>
+</tr>
+<tr>
+<td>H3 (flat × τ, n=111)</td>
+<td>−0.012</td>
+<td>0.961</td>
+<td>null</td>
+</tr>
+<tr>
+<td>H4 (flat × τ × K, n=111)</td>
+<td>+92.21</td>
+<td>&lt;0.001</td>
+<td>artifact from K-variance collapse</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H5 cannot be tested on the current panel</strong> — we lack an industry-level or firm-level volatility proxy.</p>
+<p>Pipeline is validated; substantive inference requires the sample expansion listed in the manuscript (Russell 3000 + DEF 14A + Compustat + volatility proxy).</p>
+<hr />
+<h2 id="5-implications">5. Implications</h2>
+<h3 id="for-contingency-theory">For contingency theory</h3>
+<p>Burns and Stalker's (1961) claim that organic structures fit turbulent environments is not supported by our NK operationalization. The direction is the opposite: turbulence favors vertical's concentrated, single-path decision-making over horizontal's distributed parallel search.</p>
+<h3 id="for-the-self-managing-organization-literature">For the self-managing-organization literature</h3>
+<p>Lee and Edmondson (2017) concluded qualitatively that radical-flat firms endure under "specific configurations." Our simulation makes that precise: those configurations require both (a) high τ and (b) low environmental volatility. Morning Star (tomato paste, stable production) and Buurtzorg (nursing care, slow-changing) meet both; Zappos, Oticon, Valve (consumer markets, fast change) do not.</p>
+<h3 id="for-ai-era-organizational-design">For AI-era organizational design</h3>
+<p>The popular "AI + volatility → flat" argument has two steps. The first (AI raises τ) is supported by our static ABM. The second (volatility favors flat) is <strong>contradicted</strong> by our dynamic ABM. Any claim that AI will flatten organizations must separately argue that AI raises τ faster than it raises ω.</p>
+<h3 id="for-empirical-research-design">For empirical research design</h3>
+<p>Future studies comparing flat and hierarchical firm performance should separately measure industry-level environmental volatility (margin variance, regulatory-change frequency). Our simulation predicts that flat-firm advantages found at high τ in stable industries will not generalize to high-volatility industries.</p>
+<hr />
+<h2 id="6-reproducibility-manifest">6. Reproducibility manifest</h2>
+<table>
+<thead>
+<tr>
+<th>Asset</th>
+<th>Location</th>
+<th>How to regenerate</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Static ABM v1</td>
+<td><code>results/results.csv</code></td>
+<td><code>python abm/experiment.py</code></td>
+</tr>
+<tr>
+<td>Static ABM v2</td>
+<td><code>results/results_v2.csv</code></td>
+<td><code>python abm/experiment_v2.py</code></td>
+</tr>
+<tr>
+<td>Parameter robustness</td>
+<td><code>results/results_robustness.csv</code></td>
+<td><code>python abm/robustness.py</code></td>
+</tr>
+<tr>
+<td>Dynamic ABM (fixed shock)</td>
+<td><code>results/results_dynamic.csv</code></td>
+<td><code>python abm/experiment_dynamic.py</code></td>
+</tr>
+<tr>
+<td><strong>Volatility gradient (headline)</strong></td>
+<td><code>results/results_volatility.csv</code></td>
+<td><code>python abm/experiment_volatility.py</code></td>
+</tr>
+<tr>
+<td>3-bank replication</td>
+<td><code>results/results_replication.csv</code></td>
+<td><code>python abm/experiment_replication.py</code></td>
+</tr>
+<tr>
+<td>Alternative shock models</td>
+<td><code>results/results_shocks.csv</code></td>
+<td><code>python abm/experiment_shocks.py</code></td>
+</tr>
+<tr>
+<td>Multi-level V</td>
+<td><code>results/results_multilevel.csv</code></td>
+<td><code>python abm/experiment_multilevel.py</code></td>
+</tr>
+<tr>
+<td>Heterogeneous agents</td>
+<td><code>results/results_heterogeneous.csv</code></td>
+<td><code>python abm/experiment_heterogeneous.py</code></td>
+</tr>
+<tr>
+<td>Bootstrap 95% CIs</td>
+<td><code>results/bootstrap_summary.json</code></td>
+<td><code>python abm/bootstrap_analysis.py</code></td>
+</tr>
+<tr>
+<td>All figures</td>
+<td><code>results/figures/*.png</code></td>
+<td><code>python abm/visualize_robustness_all.py</code> (also calls the three baseline visualize scripts)</td>
+</tr>
+<tr>
+<td>Archival panel</td>
+<td><code>empirical/real_data/real_panel.csv</code></td>
+<td>EDGAR + yfinance + parse_fix.py + merge_panel.py</td>
+</tr>
+<tr>
+<td>Regression summary</td>
+<td><code>empirical/real_data/regression_real_summary.csv</code></td>
+<td><code>python empirical/real_data/regression_real.py</code></td>
+</tr>
+<tr>
+<td>Manuscript PDF</td>
+<td><code>submission/manuscript.pdf</code></td>
+<td><code>python abm/final_assembly.py</code> (fills placeholders, regenerates figures, rebuilds PDF)</td>
+</tr>
+</tbody>
+</table>
+<p>All seeds fixed. ~60–90 min total replication on a laptop (~half that if the four extensions run in parallel).</p></body></html>

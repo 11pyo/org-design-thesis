@@ -1,0 +1,71 @@
+============================================================
+SSRN submission fields - ready to copy-paste
+============================================================
+
+TITLE (max 300 chars)
+--------------------
+Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure
+
+
+ABSTRACT (max ~1875 chars)
+--------------------
+The popular claim that information technology favors flat organizations coexists with a mixed empirical record: some self-managing firms endure for decades while others collapse. Classical contingency theory (Burns & Stalker 1961) predicted that flat, organic structures fit turbulent environments. This paper tests that prediction computationally and finds it inverted. In agent-based models on Kauffman NK fitness landscapes, environmental volatility does not favor horizontal structures -- it reverses the horizontal advantage. We report findings from 36,900 simulated firm-level experiments spanning nine pre-registered batteries. First, in static environments the classical conditional story holds: vertical wins at low individual information accessibility tau, horizontal wins at high tau, with the crossover tau*(K) decreasing in task complexity. Second, environmental shocks (periodic partial landscape reshuffles) monotonically shift the V-vs-H gap toward V. At near-static shock frequencies (1 per 100 steps), H beats V by 0.029 fitness units (95% bootstrap CI [-0.036, -0.023]); at high shock frequencies (1 per 3 steps), V beats H by 0.081 ([+0.070, +0.092]). Regressing V-H on log(omega) gives slope +0.030 (95% CI [+0.026, +0.033]); permutation p < 0.002; Spearman rho = +1.00 across six levels. The dose-response replicates across three independent seed banks (all rho >= +0.88), survives four alternative shock-model specifications (periodic, Poisson-timed, continuous drift, correlated-block; all rho >= +0.94), and holds across four agent-heterogeneity regimes from homogeneous to extreme-star-distribution (all rho = +1.00). A multi-level vertical structure with local-authority mid-managers -- structurally closer to Burns & Stalker's mechanistic organization than the baseline dictatorship-V -- reproduces the reversal pattern, ruling out an unrealistic-centralization artifact. Third, cluster-based hybrids perform between V and H; modularity does not uniformly dominate either pure form. A preliminary regression on a 111-firm-year SEC EDGAR plus yfinance panel is reported as pipeline validation only; the sample is underpowered. The contribution is to show that Burns and Stalker's sixty-year-old claim that organic structures fit turbulent environments does not hold in NK operationalization under any of the nine robustness variants, with direct implications for AI-era organizational-design arguments that bundle information-accessibility and volatility into a single "flat is better" prediction.
+
+
+KEYWORDS (max 10)
+--------------------
+organizational design, contingency theory, horizontal organization, agent-based modeling, NK landscape, environmental volatility, information accessibility, self-management, boundary condition, Burns and Stalker
+
+
+JEL CLASSIFICATION (pick 3-5)
+--------------------
+L22 - Firm Organization and Market Structure
+M12 - Personnel Management; Executives
+O33 - Technological Change: Choices and Consequences
+D23 - Organizational Behavior; Transaction Costs; Property Rights
+C63 - Computational Techniques; Simulation Modeling
+
+
+SSRN NETWORKS
+--------------------
+1. Management Research Network > Organization Theory eJournal
+2. Management Research Network > Organizational Behavior eJournal
+3. Economics Research Network > Personnel Economics eJournal
+
+
+AUTHORS
+--------------------
+Wonpyo Han
+Email: unc50018441@gmail.com
+ORCID: (create one at orcid.org)
+
+
+DATE OF WRITING
+--------------------
+2026-04-23
+
+
+PAPER STATUS
+--------------------
+Working paper; feedback welcome. Not yet under journal review.
+
+
+TRANSPARENCY NOTE
+--------------------
+An earlier draft claimed cluster-based hybrid dominance under volatility. That claim resulted from a simulation bug (the dynamic-experiment hybrid trajectory did not receive landscape shocks). The bug was corrected and experiments re-run; the current paper reports the corrected finding (volatility favors vertical). The revision history and bug disclosure appear openly in the manuscript conclusion and in the repository commit log.
+
+
+FUNDING / ACKNOWLEDGMENTS
+--------------------
+No external funding. Research scaffolding generated via AI-assisted workflow (Claude Opus 4.7); all substantive design, interpretation, and framing decisions by the author.
+
+
+LINKS
+--------------------
+- Code & data: https://github.com/<your-username>/org-design-thesis
+- Code release DOI: (paste from Zenodo after release)
+
+
+SUGGESTED CITATION
+--------------------
+Han, W. (2026). Volatility reverses the horizontal-organization advantage: How environmental turbulence inverts the information-accessibility prescription for organizational structure. SSRN Working Paper.

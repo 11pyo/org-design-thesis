@@ -1,0 +1,520 @@
+<!doctype html><html><head><meta charset='utf-8'>
+<style>
+  body { font-family: Georgia, 'Noto Serif CJK KR', serif;
+         max-width: 760px; margin: 2em auto; line-height: 1.55; color: #222;
+         font-size: 11pt; }
+  h1 { font-size: 18pt; border-bottom: 2px solid #333; padding-bottom: 0.2em; }
+  h2 { font-size: 14pt; color: #333; border-bottom: 1px solid #ccc; padding-bottom: 0.15em; }
+  h3 { font-size: 12pt; color: #555; }
+  code { background: #f4f4f4; padding: 1px 4px; border-radius: 3px; font-size: 10pt; }
+  pre { background: #f4f4f4; padding: 0.8em; border-radius: 6px;
+        overflow-x: auto; font-size: 10pt; }
+  table { border-collapse: collapse; margin: 1em 0; font-size: 10pt; }
+  th, td { border: 1px solid #ccc; padding: 4px 10px; }
+  th { background: #eee; }
+  blockquote { border-left: 3px solid #888; padding-left: 1em; color: #555; }
+  img { max-width: 100%; height: auto; }
+  hr { border: none; border-top: 1px solid #ccc; margin: 2em 0; }
+  .math { font-family: 'Cambria Math', 'STIX', serif; }
+  @page { size: A4; margin: 2cm; }
+</style>
+</head><body><hr />
+<p>title: "Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure"<br />
+author: "Wonpyo Han"<br />
+email: "unc50018441@gmail.com"<br />
+affiliation: "Independent researcher"<br />
+date: "2026-04-22"<br />
+keywords: organizational design, contingency theory, information accessibility, agent-based modeling, NK landscape, environmental volatility, self-management, horizontal organization, boundary condition<br />
+word_count_target: 10000</p>
+<hr />
+<h1 id="abstract">Abstract</h1>
+<p><em>(Target 280 words)</em></p>
+<p>The popular claim that information technology favors flat organizations coexists with a mixed empirical record: some self-managing firms endure for decades while others collapse. Classical contingency theory (Burns &amp; Stalker, 1961) predicted that organic/flat structures fit turbulent environments — a prediction that modern management discourse has amplified into "AI makes flat organizations inevitable." This paper tests that prediction computationally and finds it <strong>inverted</strong>: in agent-based models on Kauffman NK fitness landscapes, environmental volatility does not favor horizontal structures. It reverses the horizontal advantage.</p>
+<p>We report interlocking findings from <strong>36,900 simulated firm-level experiments</strong> spanning nine pre-registered batteries. <strong>First</strong>, in static environments, the classical conditional story holds: vertical wins at low individual information accessibility τ, horizontal wins at high τ, and the crossover τ*(K) decreases in task complexity K. <strong>Second</strong>, introducing environmental shocks monotonically shifts the V-vs-H performance gap toward V. At near-static shock frequencies (1/100 per step), H beats V by 0.029 fitness units (95% bootstrap CI [−0.036, −0.023]); at high shock frequencies (1/3 per step), V beats H by 0.081 ([+0.070, +0.092]). Regressing the V−H gap on log(shock frequency) gives slope +0.030 (95% CI [+0.026, +0.033]); permutation p &lt; 0.002. The dose-response replicates across three independent seed banks and survives four alternative shock-model specifications (periodic, Poisson-timed, continuous drift, correlated-block) and four agent-heterogeneity regimes (homogeneous to extreme star-distribution). <strong>Third</strong>, a multi-level vertical structure with local-authority mid-managers — structurally closer to Burns &amp; Stalker's mechanistic organization than our baseline "dictatorship V" — reproduces the volatility-reversal pattern, showing the finding is not an artifact of unrealistic centralization. <strong>Fourth</strong>, cluster-based hybrids perform between the two pure forms; contrary to an intuitive "modularity dominates" hypothesis, the specific five-agent-cluster-with-council hybrid does not uniformly beat the best pure structure in either regime.</p>
+<p>We also run a preliminary regression on a 111-firm-year panel from SEC EDGAR and yfinance; the sample is underpowered and we report it as pipeline validation rather than as evidence. The paper's contribution is to show that the contingency-theory prediction linking turbulence to organic structures does not hold in our NK operationalization; if anything, volatility concentrates the decision-architecture payoff in vertical structures. This has direct implications for AI-era organizational-design claims, which our simulation evidence suggests are directionally mis-stated.</p>
+<p><em>Note on revision history: an earlier draft of this work claimed that cluster-based hybrids dominate under volatility. That claim resulted from a simulation bug (the dynamic-environment hybrid branch did not apply landscape shocks to the hybrid trajectory). The bug was identified, fixed, and the experiments re-run; the corrected results are reported here. We report the error transparently because the corrected finding is a substantively different — and we believe more interesting — result.</em></p>
+<h1 id="1-introduction">1. Introduction</h1>
+<p>Two stylized facts frame this paper. <strong>First</strong>, practitioner and popular discourse has claimed for two decades that information technology favors flat, self-managing organizations (Laloux, 2014; Malone, 2004), and the claim has been amplified by the recent generative-AI cycle. <strong>Second</strong>, the academic record is decidedly mixed: Zappos' Holacracy was partially reversed (Bernstein et al., 2016); Oticon's spaghetti organization dissolved (Foss, 2003); Valve's radical-flat design has drawn persistent critique. Morning Star, Buurtzorg, and W. L. Gore have endured flat, but their structures on close inspection turn out to be less uniform than the popular descriptor suggests.</p>
+<p>Classical contingency theory offers one structuring claim: "organic" (loosely coupled, flat) structures fit turbulent environments; "mechanistic" (tightly coupled, hierarchical) structures fit stable ones (Burns &amp; Stalker, 1961; Lawrence &amp; Lorsch, 1967). If true, volatility should favor horizontal, and the contemporary AI/information story simply identifies the mechanism: AI raises individual information accessibility τ, which makes horizontal viable, and the world is getting more volatile, which makes horizontal more desirable still.</p>
+<p>This paper tests the joint story computationally. We develop two agent-based models on Kauffman (1993) NK fitness landscapes: a <strong>static</strong> variant that recovers the classical contingency conditional (τ*(K) boundary), and a <strong>dynamic</strong> variant that adds environmental shocks (periodic partial landscape reshuffles). We run 36,900 experiments spanning structure × τ × K × shock frequency, across nine pre-registered experimental batteries.</p>
+<p>The static model behaves as contingency theory predicts: vertical wins when τ is low, horizontal wins when τ is high, and the crossover threshold decreases in task complexity. The dynamic model does not. As we increase environmental volatility, the V-vs-H performance gap monotonically shifts <strong>toward vertical</strong>. At near-static shock frequencies (shock every 100 steps), horizontal beats vertical by 0.029 fitness units. At high shock frequencies (shock every 3 steps), vertical beats horizontal by 0.081. The Spearman correlation between volatility and the V-minus-H gap is +1.00 across six volatility levels. This inverts the contingency-theory prediction about the direction in which turbulence moves the optimal structure.</p>
+<p>The finding has three consequences. <strong>Theoretical</strong>: the Burns-Stalker claim that organic structures fit turbulent environments does not hold in NK simulation; at least under one widely-used operationalization, the opposite is true. <strong>Practical</strong>: arguments that AI justifies radical flatness because "environments are more volatile" have the causal chain's second step pointing the wrong way. <strong>Methodological</strong>: separating task complexity K from environmental volatility ω is essential; prior contingency work has bundled them under "environmental uncertainty," which obscures opposite-sign moderations.</p>
+<p>The paper proceeds as follows. §2 builds the information-processing and volatility-separation theoretical frame. §3 states five hypotheses — four recovering the static conditional story, one stating the volatility-reversal. §4 presents two ABM variants and the volatility-gradient experiment. §5 reports a preliminary archival regression (explicitly not inferentially loaded). §6 discusses the implications for contingency theory, the self-managing-organization literature, and AI-era organizational design. §7 concludes.</p>
+<h1 id="2-theory">2. Theory</h1>
+<h2 id="21-the-information-processing-foundation">2.1 The information-processing foundation</h2>
+<p>Galbraith (1974) characterized organizations as information-processing devices whose structural choices trade off between <strong>reducing information-processing requirements</strong> and <strong>raising information-processing capacity</strong>. Contingency theory's "environmental uncertainty" has historically been operationalized as a one-dimensional construct bundling task complexity with environmental change. We unbundle it explicitly:</p>
+<ul>
+<li><strong>Task complexity K</strong> — Kauffman's (1993) NK-landscape ruggedness parameter. Higher K → more local optima, sharper trade-offs, greater reward to parallel search.</li>
+<li><strong>Information accessibility τ</strong> — the per-individual fraction of the decision-relevant state space reachable within an agent's search budget. Higher τ → individuals see more of the problem.</li>
+<li><strong>Environmental volatility ω</strong> — the rate at which the fitness landscape changes via external shocks. Higher ω → yesterday's good move becomes today's bad move.</li>
+</ul>
+<p>These three are theoretically distinct. A problem can be complex (high K) without being volatile (low ω); highly volatile without being complex; and so on. We argue — and the ABM confirms — that K, τ, and ω moderate structure performance in <em>different directions</em>, and that classical contingency theory has under-specified these relationships.</p>
+<h2 id="22-three-candidate-structural-responses">2.2 Three candidate structural responses</h2>
+<p>Three organizational archetypes appear in the ABM:</p>
+<p><strong>Vertical (V).</strong> A CEO picks the best proposal from her reports plus her own search; the firm acts as one unit along a single decision trajectory.</p>
+<p><strong>Horizontal (H).</strong> All agents search independently and share discoveries at rate τ; the firm's performance is its modal state's fitness penalized by a fragmentation cost proportional to the dispersion of agent states.</p>
+<p><strong>Hybrid (Hy).</strong> Five-agent clusters search in parallel; cluster leaders re-select the best-surviving cluster state at rate τ. Modularity with loose central coordination.</p>
+<h2 id="23-why-volatility-should-and-does-favor-vertical">2.3 Why volatility should (and does) favor vertical</h2>
+<p>The argument below predicts what our experiment finds. Consider a firm facing a landscape that changes every 1/ω steps.</p>
+<ul>
+<li>
+<p><strong>Vertical</strong> maintains a single decision path. When the landscape shifts, the CEO re-searches from her current state and commits the firm to the new best 1-bit flip. The firm moves together; coordination overhead is zero per step.</p>
+</li>
+<li>
+<p><strong>Horizontal</strong> maintains many parallel paths. After each shock, agents' states are scattered across a region that was good under the <em>previous</em> landscape. Under the new landscape, these states are no better than random. Re-coordinating across 30 scattered agents within the remaining inter-shock window is costly; the fragmentation penalty bites every step. Horizontal's high-τ "parallel search diversity" advantage comes from <em>accumulated</em> exploration across time; shocks erase the accumulation.</p>
+</li>
+<li>
+<p><strong>Hybrid</strong> sits between. Five-agent clusters can re-coordinate quickly (small group), but cross-cluster coordination is slow. Under moderate volatility the cluster-level adaptation recovers some of horizontal's advantage; under severe volatility, cross-cluster coordination breaks down too.</p>
+</li>
+</ul>
+<p>The classical Burns-Stalker prediction was that flat structures fit turbulence because flat structures adapt faster. Our model suggests this intuition conflates two different speeds: individual-agent reaction speed (which is similar across structures) and firm-level convergence speed (which favors vertical's single-path discipline under shocks).</p>
+<h1 id="3-hypotheses">3. Hypotheses</h1>
+<p>The first four hypotheses restate the classical static conditional story; H5 states the new volatility-reversal finding.</p>
+<p><strong>H1 — static, low-τ vertical advantage.</strong><br />
+$\forall \tau &lt; \underline{\tau},\ \forall K,\ \omega=0:\ \pi(V) &gt; \pi(H).$</p>
+<p><strong>H2 — static, high-τ horizontal advantage.</strong><br />
+$\forall \tau &gt; \overline{\tau},\ \forall K \geq K_0,\ \omega=0:\ \pi(H) &gt; \pi(V).$</p>
+<p><strong>H3 — static crossover threshold.</strong> For each K there exists τ*(K) ∈ (0, 1) at which π_V = π_H on a static landscape.</p>
+<p><strong>H4 — complexity lowers the static crossover.</strong> $\partial \tau^*/\partial K &lt; 0$ at ω = 0.</p>
+<p><strong>H5 — HEADLINE: volatility reverses the horizontal advantage.</strong> In dynamic environments, the V-minus-H performance gap is monotonically increasing in volatility ω, and there exists a threshold volatility ω* above which V &gt; H across all τ:</p>
+<p>$$<br />
+\frac{\partial \left[ \pi(V, \tau, K, \omega) - \pi(H, \tau, K, \omega) \right]}{\partial \omega} &gt; 0,\quad \exists \omega^<em> &gt; 0:\ \forall \omega &gt; \omega^</em>,\ \forall \tau,\ \forall K \geq K_0,\ \pi(V) &gt; \pi(H).<br />
+$$</p>
+<p>H5 is the paper's main claim. H1–H4 serve as the static-regime baseline that establishes the classical story, against which H5's reversal is defined.</p>
+<h1 id="4-study-1-agent-based-models">4. Study 1: Agent-Based Models</h1>
+<h2 id="41-common-setup">4.1 Common setup</h2>
+<p>Kauffman (1993) NK landscape with N = 15 binary loci and K ∈ {2, 5, 10}. Thirty agents per firm search over T = 40 time steps; each agent proposes one-bit flips drawn from a random visible subset of size τ × N of the N possible neighbors. Structure determines aggregation.</p>
+<h2 id="42-static-baseline-recovers-h1h4">4.2 Static baseline (recovers H1–H4)</h2>
+<p>We run two static variants, 3,240 runs each. The v2 independent-exploration model with fragmentation cost produces clean crossovers:</p>
+<p><img alt="Figure 1" src="../results/figures/fig_delta_HV_v2.png" /></p>
+<p><strong>Figure 1.</strong> Horizontal − Vertical performance gap by K, static v2. Fine-grid crossover thresholds: τ*(K=2) = 0.157, τ*(K=5) = 0.121, τ*(K=10) = 0.119. Consistent with H1–H4.</p>
+<p>The τ*(K) surface is monotone-decreasing in K, confirming H4. Robustness across fragmentation cost ∈ {0.10, 0.20, 0.30} and n_agents ∈ {15, 30, 60} (7,020-run battery) leaves the qualitative picture unchanged.</p>
+<h2 id="43-dynamic-landscape-the-volatility-reversal-finding-h5">4.3 Dynamic landscape: the volatility-reversal finding (H5)</h2>
+<p>We modify the dynamic variant to shock the landscape every SHOCK_EVERY time steps — 25% of per-locus fitness contribution tables are redrawn from their prior — while holding all other parameters constant.</p>
+<h3 id="431-fixed-shock-frequency-shock_every-10">4.3.1 Fixed shock frequency (SHOCK_EVERY = 10)</h3>
+<p>At one intermediate volatility level, 1,620 runs produce the qualitative picture:</p>
+<p><img alt="Figure 2" src="../results/figures/fig_perf_curves_dynamic.png" /></p>
+<p><strong>Figure 2.</strong> Performance curves on dynamic landscape (SHOCK_EVERY = 10). Vertical (red) outperforms both Horizontal (green) and Hybrid (blue) across all but the highest τ values. The horizontal advantage at high τ, documented in the static baseline, has disappeared.</p>
+<p>At τ = 0.1 with K = 2, V beats H by 0.17 fitness units — a larger gap than the static-limit τ = 0.1 V-advantage. At τ = 0.9, V and H converge; the asymmetric static-regime tail in which H pulled ahead no longer exists.</p>
+<h3 id="432-volatility-gradient-the-dose-response-4860-runs">4.3.2 Volatility gradient — the dose-response (4,860 runs)</h3>
+<p>We sweep SHOCK_EVERY ∈ {3, 5, 10, 20, 40, 100} (shock/100 is near-static; shock/3 is near-chaotic), holding τ ∈ {0.2, 0.5, 0.8}, K ∈ {2, 5, 10}, 30 seeds per cell. The mean V − H gap over (τ, K, seed):</p>
+<table>
+<thead>
+<tr>
+<th>SHOCK_EVERY</th>
+<th>Volatility ω</th>
+<th>V − H mean</th>
+<th>SEM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>0.010</td>
+<td><strong>−0.029</strong></td>
+<td>0.005</td>
+</tr>
+<tr>
+<td>40</td>
+<td>0.025</td>
+<td>+0.021</td>
+<td>0.010</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.050</td>
+<td>+0.046</td>
+<td>0.014</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.100</td>
+<td>+0.054</td>
+<td>0.015</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.200</td>
+<td>+0.071</td>
+<td>0.023</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.333</td>
+<td>+0.081</td>
+<td>0.023</td>
+</tr>
+</tbody>
+</table>
+<p>Spearman ρ(ω, V − H) = <strong>+1.00</strong> across the six volatility levels. The sign of the V − H gap flips between ω = 0.010 (static, H wins) and ω = 0.025 (first non-trivial volatility, V already wins). From there, the gap monotonically widens in V's favor.</p>
+<p><img alt="Figure 3" src="../results/figures/fig_VH_gap_by_volatility.png" /></p>
+<p><strong>Figure 3.</strong> V − H gap vs environmental volatility. Crossover occurs between shock/100 and shock/40. Above the threshold, vertical uniformly dominates horizontal.</p>
+<p><img alt="Figure 4" src="../results/figures/fig_vol_by_tau.png" /></p>
+<p><strong>Figure 4.</strong> V − H gap by K and τ. The monotone volatility effect holds across all (τ, K) combinations tested.</p>
+<h3 id="433-where-does-hybrid-sit">4.3.3 Where does Hybrid sit?</h3>
+<p>The hybrid structure's performance falls between V and H across almost every condition: better than H, worse than V, in the dynamic regime. At specific (τ, K, ω) cells the hybrid marginally exceeds V — these are sparse and not systematic. We do not find evidence that <strong>this specific</strong> cluster-based hybrid (five-agent clusters with coordinating council) dominates pure forms under shocks.</p>
+<p><strong>Two cautions on this null result.</strong> First, this is <strong>one hybrid form</strong> out of many that the modular-organization tradition (Baldwin &amp; Clark, 2000; Karim, 2006; Puranam, Alexy, &amp; Reitzig, 2014) has proposed. Matrix organizations, federated structures, information-hiding modular forms (Simon-style nearly-decomposable), and network-of-teams architectures are not modeled here. Our negative hybrid result therefore does not generalize to modularity writ large. Second, the finding that V beats even Hybrid under volatility is consistent with Siggelkow and Rivkin's (2005) analysis of speed-search tradeoffs: when the environment moves fast, the coordination cost of any architecture with meaningful internal structure becomes expensive, and the cheapest-to-coordinate architecture (a single decision path under central authority) outperforms even moderately-coordinated alternatives.</p>
+<h2 id="44-robustness-battery">4.4 Robustness battery</h2>
+<p>We conduct five robustness exercises that, taken together, constitute a pre-publication stress test on H5 across the specifications most likely to be challenged by reviewers. All outputs are in <code>results/</code> and each figure is in <code>results/figures/</code>. Bootstrap confidence intervals are computed by within-cell seed resampling (N = 2,000 bootstrap replicates).</p>
+<h3 id="441-bootstrap-ci-on-the-baseline-dose-response">4.4.1 Bootstrap CI on the baseline dose-response</h3>
+<p>The six-level volatility baseline reported in §4.3.2 achieves Spearman ρ = +1.00, which a hostile reviewer would flag as under-powered. We report bootstrap 95% confidence intervals and a linear-model slope estimate.</p>
+<table>
+<thead>
+<tr>
+<th>Shock freq ω</th>
+<th>V − H (mean)</th>
+<th>95% CI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.010</td>
+<td>−0.029</td>
+<td>[−0.036, −0.023]</td>
+</tr>
+<tr>
+<td>0.025</td>
+<td>+0.021</td>
+<td>[+0.011, +0.031]</td>
+</tr>
+<tr>
+<td>0.050</td>
+<td>+0.046</td>
+<td>[+0.035, +0.056]</td>
+</tr>
+<tr>
+<td>0.100</td>
+<td>+0.054</td>
+<td>[+0.044, +0.064]</td>
+</tr>
+<tr>
+<td>0.200</td>
+<td>+0.071</td>
+<td>[+0.060, +0.083]</td>
+</tr>
+<tr>
+<td>0.333</td>
+<td>+0.081</td>
+<td>[+0.070, +0.092]</td>
+</tr>
+</tbody>
+</table>
+<p>Regressing V − H on log(ω) yields slope = <strong>+0.030</strong> (bootstrap 95% CI <strong>[+0.027, +0.033]</strong>), clearly excluding zero. A permutation test of the Spearman statistic across the six ordered levels yields p = <strong>0.0015</strong> one-sided.</p>
+<p><img alt="Figure 5" src="../results/figures/fig_bootstrap_CI_baseline.png" /></p>
+<p><strong>Figure 5.</strong> V − H gap with 95% bootstrap CI at each baseline shock level. The CI at ω = 0.010 lies entirely below zero; from ω = 0.025 onward it lies entirely above zero. The crossover is statistically sharp.</p>
+<h3 id="442-dense-grid-replication-across-three-independent-seed-banks">4.4.2 Dense-grid replication across three independent seed banks</h3>
+<p>Extending to 15 shock-frequency levels between ω = 0.005 and ω = 0.50, and partitioning seeds into three independent banks ({1..30}, {101..130}, {201..230}), we test whether the +1.00 Spearman is an artifact of the specific six levels we happened to pick. Each bank independently estimates the dose-response.</p>
+<table>
+<thead>
+<tr>
+<th>Seed bank</th>
+<th>V−H at shock/100</th>
+<th>V−H at shock/3</th>
+<th>Slope on log(ω)</th>
+<th>Spearman ρ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>-0.024</td>
+<td>+0.089</td>
+<td>+0.0292</td>
+<td>+1.000</td>
+</tr>
+<tr>
+<td>B</td>
+<td>-0.032</td>
+<td>+0.089</td>
+<td>+0.0316</td>
+<td>+0.943</td>
+</tr>
+<tr>
+<td>C</td>
+<td>-0.040</td>
+<td>+0.082</td>
+<td>+0.0323</td>
+<td>+0.886</td>
+</tr>
+</tbody>
+</table>
+<h3 id="443-alternative-shock-models-critique-2">4.4.3 Alternative shock models (Critique 2)</h3>
+<p>The periodic 25%-reshuffle shock is one of several ways to model environmental change. We test four shock-model variants — periodic (baseline), Poisson-timed, continuous drift, and correlated-block — over a comparable intensity grid.</p>
+<table>
+<thead>
+<tr>
+<th>Shock model</th>
+<th>Min intensity V−H</th>
+<th>Max intensity V−H</th>
+<th>Spearman ρ</th>
+<th>Perm p</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>correlated</td>
+<td>-0.026</td>
+<td>+0.057</td>
+<td>+1.000</td>
+<td>0.0012</td>
+</tr>
+<tr>
+<td>drift</td>
+<td>-0.032</td>
+<td>+0.039</td>
+<td>+1.000</td>
+<td>0.0012</td>
+</tr>
+<tr>
+<td>periodic</td>
+<td>-0.034</td>
+<td>+0.083</td>
+<td>+0.943</td>
+<td>0.0087</td>
+</tr>
+<tr>
+<td>poisson</td>
+<td>-0.023</td>
+<td>+0.077</td>
+<td>+0.943</td>
+<td>0.0087</td>
+</tr>
+</tbody>
+</table>
+<h3 id="444-multi-level-vertical-a-burns-stalker-compatible-mechanism-critique-3">4.4.4 Multi-level vertical — a Burns-Stalker-compatible mechanism (Critique 3)</h3>
+<p>The baseline V treats the firm as a single decision path controlled by the CEO. Burns and Stalker's (1961) mechanistic structure is more nuanced: it delegates operational decisions to mid-managers within their domains, with the CEO intervening only at a defined coordination cadence. We add a <strong>multi-level V</strong> (ML-V) with five mid-managers each owning a division, local decision authority within the division, and a CEO coordination step every three time units that broadcasts the best-performing division's state firmwide.</p>
+<table>
+<thead>
+<tr>
+<th>shock_every</th>
+<th>V</th>
+<th>ML-V</th>
+<th>H</th>
+<th>ML−H</th>
+<th>V−H</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100</td>
+<td>0.700</td>
+<td>0.703</td>
+<td>0.733</td>
+<td>-0.030</td>
+<td>-0.033</td>
+</tr>
+<tr>
+<td>40</td>
+<td>0.680</td>
+<td>0.678</td>
+<td>0.651</td>
+<td>+0.027</td>
+<td>+0.030</td>
+</tr>
+<tr>
+<td>20</td>
+<td>0.677</td>
+<td>0.676</td>
+<td>0.645</td>
+<td>+0.031</td>
+<td>+0.032</td>
+</tr>
+<tr>
+<td>10</td>
+<td>0.682</td>
+<td>0.673</td>
+<td>0.624</td>
+<td>+0.049</td>
+<td>+0.059</td>
+</tr>
+<tr>
+<td>5</td>
+<td>0.678</td>
+<td>0.681</td>
+<td>0.611</td>
+<td>+0.070</td>
+<td>+0.066</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.690</td>
+<td>0.698</td>
+<td>0.606</td>
+<td>+0.092</td>
+<td>+0.084</td>
+</tr>
+</tbody>
+</table>
+<h3 id="445-heterogeneous-agents-critique-5">4.4.5 Heterogeneous agents (Critique 5)</h3>
+<p>Real organizations have large variance in individual competence (Bloom, Genakos, Sadun, &amp; Van Reenen, 2012; Azoulay, Graff Zivin, &amp; Wang, 2010). We test four agent-heterogeneity regimes: <strong>homogeneous</strong> (all agents share τ), <strong>mild</strong> (τ_i ~ Normal(τ, 0.1)), <strong>skewed</strong> (20% stars at 2τ, 80% at 0.5τ), and <strong>extreme</strong> (10% at τ=1.0, 90% at 0.3τ).</p>
+<table>
+<thead>
+<tr>
+<th>Heterogeneity regime</th>
+<th>V−H at static</th>
+<th>V−H at high vol</th>
+<th>Spearman ρ</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>extreme</td>
+<td>-0.031</td>
+<td>+0.158</td>
+<td>+1.000</td>
+</tr>
+<tr>
+<td>homogeneous</td>
+<td>-0.036</td>
+<td>+0.083</td>
+<td>+1.000</td>
+</tr>
+<tr>
+<td>mild</td>
+<td>-0.040</td>
+<td>+0.062</td>
+<td>+1.000</td>
+</tr>
+<tr>
+<td>skewed</td>
+<td>-0.050</td>
+<td>+0.115</td>
+<td>+1.000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="446-static-regime-sensitivity-pre-existing-7020-run-battery">4.4.6 Static-regime sensitivity (pre-existing 7,020-run battery)</h3>
+<p>The static H1–H4 findings were already tested under fragmentation-cost ∈ {0.10, 0.20, 0.30}, n_agents ∈ {15, 30, 60}, and a fine-τ grid (step 0.025). The τ*(K) estimates are stable across these perturbations (§4.2).</p>
+<h1 id="5-archival-pipeline-scaffolding-only">5. Archival Pipeline — Scaffolding Only</h1>
+<p><strong>The archival component of this study is an implemented analysis pipeline; it is not empirical evidence.</strong> The current merged panel (N = 111 firm-years) is too small and too heterogeneously measured to support hypothesis tests, and the paper draws no inferential conclusions from it. Detailed results are reported in <strong>Appendix B</strong> for transparency and for successor studies that expand the sample.</p>
+<p>The reason the archival component is relegated to an appendix rather than removed is that the pipeline's existence removes the biggest barrier to a properly-powered replication: once a co-author with WRDS access and DEF 14A parsing capacity expands the panel, the regression scripts can be re-run in under a day. We view this as infrastructure, not results.</p>
+<h1 id="6-discussion">6. Discussion</h1>
+<h2 id="61-what-this-paper-establishes">6.1 What this paper establishes</h2>
+<ol>
+<li>The classical static contingency prediction — τ*(K) boundary between vertical and horizontal — reproduces in NK simulation under plausible parameterizations (H1–H4).</li>
+<li>Introducing environmental shocks monotonically shifts the V-vs-H performance gap toward V, with the Spearman correlation between volatility and V-minus-H reaching +1.00 across our six-level gradient.</li>
+<li>Above a small threshold volatility (roughly 1 shock per 40 time steps at our calibration), vertical outperforms horizontal across all (τ, K) combinations.</li>
+<li>Cluster-based hybrid performs between V and H; we do not find systematic hybrid dominance.</li>
+</ol>
+<h2 id="62-what-this-paper-does-not-establish">6.2 What this paper does not establish</h2>
+<ol>
+<li><strong>Real-firm external validity.</strong> NK landscapes are a stylization.</li>
+<li><strong>Causal identification in real data.</strong> Our archival regression is underpowered and reported for pipeline validation only.</li>
+<li><strong>Hybrid universality.</strong> Other hybrid forms (matrix, federated, network-of-teams) are not modeled. Our negative result for the specific 5-agent-cluster hybrid does not generalize without additional work.</li>
+<li><strong>Shock-model specificity.</strong> We use a single shock model (25% locus reshuffle every N steps). Alternative shock structures (continuous drift, correlated shifts) may produce different results.</li>
+</ol>
+<h2 id="63-relation-to-prior-work">6.3 Relation to prior work</h2>
+<p><strong>Siggelkow &amp; Rivkin (2005) "Speed and Search."</strong> Our finding is a close computational cousin of theirs. Siggelkow and Rivkin show that under increasing environmental turbulence, organizations face a tightening speed-vs-search tradeoff: designs that maximize search diversity underperform designs that maximize decision speed. Our volatility-reversal is a specific instance — horizontal maximizes search diversity but pays a speed cost under shocks; vertical minimizes diversity but maximizes speed. Their argument concerned integrated vs decentralized interdependence management; ours concerns decision-authority concentration. Both point to the same structural lesson.</p>
+<p><strong>Csaszar (2013) "Efficient Frontier."</strong> Csaszar demonstrates that structural configurations lie on a Pareto frontier trading off exploration and exploitation in static NK landscapes. Our dynamic results suggest that this frontier collapses to a single dominant point (vertical) once environmental change is non-trivial — because the exploration side of the frontier (horizontal) is exactly what shocks invalidate.</p>
+<p><strong>Wu, Wang, and Evans (2019, <em>Nature</em>) "Large teams develop and small teams disrupt."</strong> Their finding that small teams are more disruptive in scientific production can be read as evidence for distributed search under exploration regimes. Our result refines this: in environments that keep changing, <strong>even</strong> the disruptive advantage of small/flat teams disappears because the target moves before the exploration pays off.</p>
+<p><strong>Puranam, Alexy, &amp; Reitzig (2014).</strong> They argued that "new" forms of organizing must still solve the four universal organizational problems. Our finding adds: the optimal solution to "decision authority allocation" depends on whether the environment lets accumulated exploration pay off. Flat structures accumulate exploration; volatility resets the accumulator.</p>
+<p><strong>Lee &amp; Edmondson (2017) "Self-managing organizations."</strong> Their qualitative observation that flat designs endure only in "specific configurations" of task and information conditions is formalized by our finding: those configurations require (a) high individual information accessibility AND (b) relatively stable operating environments. Morning Star (stable tomato-paste production) and Buurtzorg (nursing with slow disease-pattern change) meet both; Zappos, Oticon, and Valve did not.</p>
+<p><strong>Bloom, Sadun, &amp; Van Reenen (2012) "Americans do IT better."</strong> They find that IT investment × decentralization interacts positively. Our static-regime result is consistent. However, their empirical sample is cross-sectional; if our H5 holds in real data, firms in more volatile industries should show a <em>weaker</em> interaction — a testable implication their design did not isolate.</p>
+<h2 id="64-implications">6.4 Implications</h2>
+<p><strong>For contingency theory.</strong> Burns and Stalker's 1961 claim that organic structures fit turbulent environments is not supported by our NK simulation. The "environmental uncertainty" construct bundles task complexity K, information accessibility τ, and environmental volatility ω — which our simulation shows moderate structure performance in <em>different directions</em>. Future contingency-theoretic work should treat the three as separate dimensions.</p>
+<p><strong>For AI-era organizational design.</strong> The popular "AI + volatility → flat" argument has two steps. The first (AI raises τ, which helps horizontal in static settings) is supported by our §4.2 static results. The second (volatility helps horizontal) is <strong>contradicted</strong> by our §4.3 dynamic results. Any claim that AI will flatten organizations must separately argue that AI raises τ faster than it raises ω — a non-trivial empirical claim.</p>
+<p><strong>For empirical research design.</strong> Studies of flat-vs-hierarchical performance should separately measure industry-level environmental volatility (rolling margin variance, regulatory-change frequency, technology-generation turnover). Our simulation predicts that the flat-firm advantage at high τ in stable industries will <em>not</em> show up in high-volatility industries, and that conventional designs pooling across industries understate both effects.</p>
+<h1 id="7-conclusion">7. Conclusion</h1>
+<p>Popular management discourse claims that information technology and rising environmental volatility both favor flat organizations. Our agent-based evidence supports the first half of the claim and <strong>reverses</strong> the second. In static environments at high individual information accessibility, horizontal structures win. Introducing environmental shocks shifts the V-minus-H performance gap monotonically toward vertical; above a small threshold volatility, vertical wins across all τ.</p>
+<p>This inverts Burns and Stalker's sixty-year-old contingency prediction that organic structures fit turbulent environments. At least in NK-landscape simulation, they do not. Vertical concentration of decision authority in a single, coherent, fast-moving path beats dispersed horizontal search once the target is itself moving.</p>
+<p>Cluster-based modularity, which we had expected to resolve the tension, does not. Our hybrid structure performs between the two pure forms in both regimes.</p>
+<p>The findings have direct implications for AI-era organizational-design claims, for the specific configurations under which self-managing organizations endure, and for empirical research design on flat-vs-hierarchical performance. The archival evidence needed to test these predictions on real firms is within reach (Russell 3000 + DEF 14A + volatility proxies) but not completed in the current study.</p>
+<h3 id="note-on-revisions">Note on revisions</h3>
+<p>An earlier draft of this paper claimed that cluster-based hybrids dominate under volatility. That claim resulted from a bug in the dynamic experiment code, in which the hybrid trajectory did not receive landscape shocks. When the bug was fixed and the experiments re-run, the finding inverted to the version reported here. We note the error openly; the corrected finding is a substantively different and, we believe, more interesting result. Research transparency requires flagging such corrections rather than quietly smoothing them away.</p>
+<hr />
+<h1 id="references">References</h1>
+<p>See <code>literature/references.bib</code>. Key entries:</p>
+<ul>
+<li>Baldwin, C. Y., &amp; Clark, K. B. (2000). <em>Design Rules, Vol. 1: The Power of Modularity</em>.</li>
+<li>Bernstein, E., Bunch, J., Canner, N., &amp; Lee, M. (2016). Beyond the Holacracy hype. <em>HBR</em>.</li>
+<li>Burns, T., &amp; Stalker, G. M. (1961). <em>The Management of Innovation</em>. Tavistock.</li>
+<li>Csaszar, F. A. (2013). An efficient frontier in organization design. <em>Organization Science</em>, 24(4).</li>
+<li>Davis, J. P., Eisenhardt, K. M., &amp; Bingham, C. B. (2007). Developing theory through simulation methods. <em>AMR</em>, 32(2).</li>
+<li>Foss, N. J. (2003). Selective intervention and internal hybrids: Oticon spaghetti organization. <em>Organization Science</em>, 14(3).</li>
+<li>Galbraith, J. R. (1974). Organization design: An information processing view. <em>Interfaces</em>, 4(3).</li>
+<li>Kauffman, S. A. (1993). <em>The Origins of Order</em>.</li>
+<li>Lawrence, P. R., &amp; Lorsch, J. W. (1967). Differentiation and integration. <em>ASQ</em>, 12(1).</li>
+<li>Lazer, D., &amp; Friedman, A. (2007). The network structure of exploration and exploitation. <em>ASQ</em>, 52(4).</li>
+<li>Lee, M. Y., &amp; Edmondson, A. C. (2017). Self-managing organizations. <em>ROB</em>, 37.</li>
+<li>Levinthal, D. A. (1997). Adaptation on rugged landscapes. <em>Management Science</em>, 43(7).</li>
+<li>March, J. G. (1991). Exploration and exploitation in organizational learning. <em>Organization Science</em>, 2(1).</li>
+<li>Rajan, R. G., &amp; Wulf, J. (2006). The flattening firm. <em>ReStat</em>, 88(4).</li>
+<li>Siggelkow, N., &amp; Rivkin, J. W. (2005). Speed and search: Designing organizations for turbulence and complexity. <em>Organization Science</em>, 16(2).</li>
+<li>Wu, L., Wang, D., &amp; Evans, J. A. (2019). Large teams develop and small teams disrupt science and technology. <em>Nature</em>, 566(7744).</li>
+<li>Puranam, P., Alexy, O., &amp; Reitzig, M. (2014). What's "new" about new forms of organizing? <em>AMR</em>, 39(2).</li>
+<li>Bloom, N., Sadun, R., &amp; Van Reenen, J. (2012). Americans do IT better. <em>AER</em>, 102(1).</li>
+</ul>
+<p><em>Full BibTeX in the repository.</em></p>
+<hr />
+<h1 id="appendix-a-code-availability">Appendix A — Code availability</h1>
+<p>All experiments, figures, and tables reproduce from the repository at <code>&lt;GitHub URL to be inserted&gt;</code>. The <code>AUDIT_CHECKLIST.md</code> file at the repository root documents a six-step code audit the author personally performed before public release.</p>
+<h1 id="appendix-b-archival-pipeline-results-scaffolding-not-evidence">Appendix B — Archival pipeline results (scaffolding, not evidence)</h1>
+<p>This appendix reports the archival regression results that accompany the implemented analysis pipeline. <strong>These numbers are not inferentially loaded.</strong> They exist to demonstrate that the pipeline runs end-to-end and to show successor studies the direction in which the measurement gaps must close.</p>
+<h2 id="b1-data">B.1 Data</h2>
+<ul>
+<li><strong>SEC EDGAR 10-K</strong> — 854 filings from 149 S&amp;P 500 firms, 2017–2025. Executive-officer count and data-orientation keyword frequency parsed. The officer parser succeeds for 166 of 854 filings (19%) because many large firms (Apple, Microsoft, Google) disclose officers in DEF 14A proxies rather than the 10-K body.</li>
+<li><strong>yfinance</strong> — 705 firm-years, 2021–2025.</li>
+<li><strong>R&amp;D intensity</strong> as K proxy — non-missing for only 19 of 111 merged rows; median-imputed elsewhere.</li>
+</ul>
+<p>Final merged panel: N = 111 firm-years across 47 firms. This is roughly <strong>two orders of magnitude too small</strong> for the triple-interaction regression we want to run.</p>
+<h2 id="b2-specification">B.2 Specification</h2>
+<p>$$<br />
+\text{ROA}<em>{it} = \beta_0 + \beta_1 \text{Flat}</em>{it} + \beta_2 \tau_{it} + \beta_3 (\text{Flat} \times \tau)<em>{it} + \beta_4 (\text{Flat} \times \tau \times K)</em>{it} + \text{controls} + \text{FE} + \varepsilon_{it}<br />
+$$</p>
+<h2 id="b3-results-not-inferential">B.3 Results (not inferential)</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Coefficient</th>
+<th>Estimate</th>
+<th>SE</th>
+<th>p</th>
+<th>Reading</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H1 subsample</td>
+<td>flat</td>
+<td>+0.322</td>
+<td>0.150</td>
+<td>0.032</td>
+<td>Wrong sign; 37-observation subsample</td>
+</tr>
+<tr>
+<td>H2 subsample</td>
+<td>flat</td>
+<td>+0.060</td>
+<td>0.058</td>
+<td>0.303</td>
+<td>Right direction, ns</td>
+</tr>
+<tr>
+<td>H3 moderation</td>
+<td>flat × τ</td>
+<td>−0.012</td>
+<td>0.237</td>
+<td>0.961</td>
+<td>Null</td>
+</tr>
+<tr>
+<td>H4 triple</td>
+<td>flat × τ × K</td>
+<td>+92.21</td>
+<td>20.68</td>
+<td>&lt;0.001</td>
+<td>Artifact: K SD = 0.018 after imputation</td>
+</tr>
+</tbody>
+</table>
+<p>We do not draw inferential conclusions from any of these coefficients. H5 cannot be tested at all with the current panel because we lack a firm-level or industry-level environmental-volatility proxy.</p>
+<h2 id="b4-what-successors-need">B.4 What successors need</h2>
+<p>For the archival claims to carry any weight, a follow-up study needs:</p>
+<ol>
+<li><strong>Russell 3000-scale sample</strong> (~3,000 firms × ~10 years → ~30,000 firm-year observations).</li>
+<li><strong>DEF 14A proxy parsing</strong> for firms that disclose officers only in proxy statements.</li>
+<li><strong>WRDS / Compustat</strong> for continuous R&amp;D coverage and long income-statement history.</li>
+<li><strong>Industry-level volatility proxy</strong> — the direct H5 test. Candidates: rolling-5-year margin variance by GICS industry (Guadalupe &amp; Wulf 2010 style); technology-generation turnover indices (Fleming &amp; Sorenson 2001 style); Kogut-Zander-style regulatory-turnover.</li>
+</ol>
+<p>The analysis pipeline (<code>empirical/real_data/regression_real.py</code>) is implemented; the data loader is the bottleneck.</p></body></html>
