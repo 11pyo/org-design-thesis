@@ -17,7 +17,10 @@ Produced a working paper with a novel, counterintuitive finding in organizationa
 
 ## Independent second project (parallel)
 
-*Adaptive Limits of Algorithmic Cryptocurrency Trading from a Complex Adaptive Systems Perspective: An Empirical Study on Human-AI Collaborative Strategy* — March 2026, sole-authored at Hansung University. 160+ experiments across 10 cryptocurrency assets over 45 months testing composite technical trading rules, Q-Learning, and sentiment integration. Headline: a real-time EMA(50/200) regime detector significantly outperforms always-on algorithmic deployment (p=0.036), providing empirical support for a human-AI collaborative trading framework. JEL: G14, G11, C63, C61. Target: arXiv cs.AI (submission 7450889, endorsement code EEZQQM pending).
+*Adaptive Limits of Algorithmic Cryptocurrency Trading from a Complex Adaptive Systems Perspective: An Empirical Study on Human-AI Collaborative Strategy* — March 2026, sole-authored at Hansung University. 160+ experiments across 10 cryptocurrency assets over 45 months testing composite technical trading rules, Q-Learning, and sentiment integration. Headline: a real-time EMA(50/200) regime detector significantly outperforms always-on algorithmic deployment (p=0.036), providing empirical support for a human-AI collaborative trading framework. JEL: G14, G11, C63, C61.
+
+- **SSRN:** [abstract 6477100](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6477100) (submitted 2026-03-27, under staff review)
+- **arXiv cs.AI:** submission 7450889 (endorsement code `EEZQQM`, request pending)
 
 ---
 
