@@ -67,6 +67,7 @@ Produced a working paper with a novel, counterintuitive finding in organizationa
 | 2026-04-23 | Zenodo DOI [`10.5281/zenodo.19707964`](https://doi.org/10.5281/zenodo.19707964) minted from v1.0 GitHub release (via Zenodo–GitHub webhook). |
 | 2026-04-23 | SSRN submission complete — [abstract 6634219](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219). Routed to ERPN: Firm Organization / Organizational Strategy and ORG: Organizational Development / Learning / Other Types. Under SSRN staff review. |
 | 2026-04-23 | Cold-outreach emails sent to Felipe Csaszar (Michigan Ross) and Maciej Workiewicz (ESSEC) requesting co-authorship on theoretical framing. |
+| 2026-04-23 | arXiv endorsement requests sent: Paper 1 (econ.GN, code `ZYYTDF`) to Nicolai Foss (CBS) with SSRN link; Paper 2 (cs.AI, code `EEZQQM`) with PDF attached. Submissions 7513080 and 7450889 queued to resume once endorsements arrive. |
 
 ---
 
