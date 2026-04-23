@@ -67,6 +67,13 @@ Produced a working paper with a novel, counterintuitive finding in organizationa
 
 ## Artifacts produced
 
+### Governance, review, and pre-registration infrastructure
+- **Audit log** — `AUDIT_CHECKLIST.md` (six independently-verifiable steps; signed off by author at commit `8a50752`, 2026-04-23)
+- **Pre-analysis plan for the archival test of H5** — `PRE_ANALYSIS_PLAN.md` (spec, exclusions, failure criteria, deviations policy; to be filed on OSF before data-fetch)
+- **Contributing guide** — `CONTRIBUTING.md` (reviewer expectations, extension candidates, style rules)
+- **Zenodo release metadata pinning** — `.zenodo.json`
+- **arXiv endorsement playbook** — `submission/arxiv_endorsement_request.md` (three candidate endorsers ranked by awkwardness; email template)
+
 ### Written
 - **Manuscript** — `paper/manuscript.md` · `submission/manuscript.pdf` (~30 pages, 8 figures, ~10k words)
 - **Findings report** — `results/report.md` · `submission/report.pdf`
@@ -112,7 +119,8 @@ Plus: `bootstrap_summary.json` · 16 publication figures in `results/figures/`.
 | GitHub repo | [`github.com/11pyo/org-design-thesis`](https://github.com/11pyo/org-design-thesis) | Public · CC BY 4.0 · v1.0 tagged |
 | Zenodo DOI | [`10.5281/zenodo.19707964`](https://doi.org/10.5281/zenodo.19707964) | Minted 2026-04-23 from GitHub v1.0 release |
 | SSRN abstract ID | [`6634219`](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219) | Submitted 2026-04-23; under SSRN staff review |
-| OSF pre-registration | *(deferred — will pre-register H5 before expanded archival analysis)* | Planned |
+| OSF pre-registration | *(plan drafted in `PRE_ANALYSIS_PLAN.md`; will be filed on OSF before archival data-fetch)* | Planned |
+| arXiv (econ.GN) | *(endorsement-gated; playbook drafted in `submission/arxiv_endorsement_request.md`)* | Queued |
 
 ---
 
