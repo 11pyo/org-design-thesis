@@ -1,6 +1,6 @@
 # arXiv endorsement requests — two parallel papers
 
-> **Author profile:** Wonpyo Han, Department of Industrial and Management Engineering, Hansung University, Seoul, South Korea · ORCID 0009-0002-7528-2228 · pk102h@naver.com
+> **Author profile:** Wonpyo Han, Dongkuk Steel Group, Seoul, South Korea · ORCID 0009-0002-7528-2228 · pk102h@naver.com
 
 | Paper | arXiv submission | Category | Endorsement code |
 |---|---|---|---|
@@ -91,7 +91,7 @@ you in advance for considering.
 
 With thanks,
 Wonpyo Han
-Department of Industrial and Management Engineering, Hansung University
+Dongkuk Steel Group
 ORCID 0009-0002-7528-2228 · pk102h@naver.com
 ```
 
@@ -120,9 +120,8 @@ Subject: arXiv endorsement request — cs.AI — algorithmic trading / complex a
 
 Dear Professor {{Name}},
 
-I'm a researcher at the Department of Industrial and Management
-Engineering, Hansung University, seeking arXiv endorsement for a
-first submission to the cs.AI category.
+I'm a researcher at Dongkuk Steel Group (Seoul), seeking arXiv
+endorsement for a first submission to the cs.AI category.
 
 The paper ("Adaptive Limits of Algorithmic Cryptocurrency Trading
 from a Complex Adaptive Systems Perspective") is an empirical study
@@ -157,7 +156,7 @@ would be enormously helpful.)
 
 With thanks,
 Wonpyo Han
-Department of Industrial and Management Engineering, Hansung University
+Dongkuk Steel Group
 ORCID 0009-0002-7528-2228 · pk102h@naver.com
 ```
 

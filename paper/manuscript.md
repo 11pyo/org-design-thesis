@@ -1,9 +1,9 @@
 ---
 title: "Volatility Reverses the Horizontal-Organization Advantage: How Environmental Turbulence Inverts the Information-Accessibility Prescription for Organizational Structure"
 author: "Wonpyo Han"
-email: "unc50018441@gmail.com"
-affiliation: "Independent researcher"
-date: "2026-04-22"
+email: "pk102h@naver.com"
+affiliation: "Dongkuk Steel Group, Seoul, South Korea"
+date: "2026-04-24"
 keywords: organizational design, contingency theory, information accessibility, agent-based modeling, NK landscape, environmental volatility, self-management, horizontal organization, boundary condition
 word_count_target: 10000
 ---
