@@ -71,6 +71,7 @@ Produced a working paper with a novel, counterintuitive finding in organizationa
 | 2026-04-23 | SSRN submission complete — [abstract 6634219](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219). Routed to ERPN: Firm Organization / Organizational Strategy and ORG: Organizational Development / Learning / Other Types. Under SSRN staff review. |
 | 2026-04-23 | Cold-outreach emails sent to Felipe Csaszar (Michigan Ross) and Maciej Workiewicz (ESSEC) requesting co-authorship on theoretical framing. |
 | 2026-04-23 | arXiv endorsement requests sent: Paper 1 (econ.GN, code `ZYYTDF`) to Nicolai Foss (CBS) with SSRN link; Paper 2 (cs.AI, code `EEZQQM`) with PDF attached. Submissions 7513080 and 7450889 queued to resume once endorsements arrive. |
+| 2026-04-28 | Paper 2 (SSRN [6477100](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6477100)) approved by SSRN staff and **POSTED** as a public working paper. Citation, downloads, Google Scholar indexing now active. Paper 1 (6634219) still in `PRELIMINARY_UPLOAD` review status. |
 
 ---
 
@@ -127,7 +128,8 @@ Plus: `bootstrap_summary.json` · 16 publication figures in `results/figures/`.
 | ORCID | [`0009-0002-7528-2228`](https://orcid.org/0009-0002-7528-2228) | Active (issued 2026-04-23) |
 | GitHub repo | [`github.com/11pyo/org-design-thesis`](https://github.com/11pyo/org-design-thesis) | Public · CC BY 4.0 · v1.0 tagged |
 | Zenodo DOI | [`10.5281/zenodo.19707964`](https://doi.org/10.5281/zenodo.19707964) | Minted 2026-04-23 from GitHub v1.0 release |
-| SSRN abstract ID | [`6634219`](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219) | Submitted 2026-04-23; under SSRN staff review |
+| SSRN abstract ID (Paper 1) | [`6634219`](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6634219) | Submitted 2026-04-23; under SSRN staff review |
+| SSRN abstract ID (Paper 2) | [`6477100`](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6477100) | Submitted 2026-03-27; **POSTED 2026-04-28** (publicly downloadable) |
 | OSF pre-registration | *(plan drafted in `PRE_ANALYSIS_PLAN.md`; will be filed on OSF before archival data-fetch)* | Planned |
 | arXiv (econ.GN) | *(endorsement-gated; playbook drafted in `submission/arxiv_endorsement_request.md`)* | Queued |
 
